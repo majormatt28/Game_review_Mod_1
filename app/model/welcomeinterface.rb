@@ -20,12 +20,17 @@ class WelcomeInterface
     end
 
     def login_helper
+        puts "Welcome Back!"
+        @owner = Owner.login_helper_method
     end
     
     def sign_up_helper
+        puts "You've chosen wisely!"
+        @owner = Owner.sign_up_helper_method
     end
 
     def exit_helper
+        puts "Smell ya later!"
     end
 
     def directory
