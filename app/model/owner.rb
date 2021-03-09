@@ -2,17 +2,19 @@ class Owner < ActiveRecord::Base
     has_many :reviews
     has_many :video_games, through: :reviews
 
-    def login_helper_method
+    def self.login_helper_method
         puts "This you?"
-        username = STDIN.gets.chomp
-        puts "You sure?"
+        owner = STDIN.gets.chomp
+        puts ("You sure?")
         password = STDIN.gets.chomp
-        
+        owner_inst = Owner.find_by(name: owner, password: password)
     end
 
-    def sign_up_helper_method
+    def self.sign_up_helper_method
         puts "What is your chosen username?"
-        username = STDIN.gets.chomp
-
+        owner = STDIN.gets.chomp
+        puts "What password do you desire?"
+        password = STDIN.gets.chomp
+        owner_inst = Owner.create(name: owner, password: password)
     end
 end

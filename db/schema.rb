@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_09_152801) do
+ActiveRecord::Schema.define(version: 2021_03_09_201747) do
 
   create_table "owners", force: :cascade do |t|
     t.string "name"
+    t.string "password"
   end
 
   create_table "reviews", force: :cascade do |t|
