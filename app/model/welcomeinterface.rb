@@ -29,10 +29,11 @@ class WelcomeInterface
         @owner = Owner.sign_up_helper_method
     end
 
+
     def exit_helper
         puts "Smell ya later!"
     end
-
+    
     def directory
         
     end

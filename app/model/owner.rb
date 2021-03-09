@@ -16,5 +16,9 @@ class Owner < ActiveRecord::Base
         puts "What password do you desire?"
         password = STDIN.gets.chomp
         owner_inst = Owner.create(name: owner, password: password)
+        puts "Welcome Fam!"
     end
+
+
 end
+
