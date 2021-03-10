@@ -1,3 +1,5 @@
+require 'pry'
+
 class Owner < ActiveRecord::Base
     has_many :reviews
     has_many :video_games, through: :reviews
@@ -6,6 +8,7 @@ class Owner < ActiveRecord::Base
         puts "This you?"
         owner = STDIN.gets.chomp
         puts "You sure?"
+        #binding.pry
         password = STDIN.gets.chomp
         owner_inst = Owner.find_by(name: owner, password: password)
 
@@ -25,6 +28,18 @@ class Owner < ActiveRecord::Base
         password = STDIN.gets.chomp
         owner_inst = Owner.create(name: owner, password: password)
         puts "Welcome Fam!"
+    end
+
+    def delete_helper_method
+        puts "it works"
+    end
+
+    def change_password_method
+        puts "this works too"
+    end
+
+    def favorite_helper_method
+        puts "all set cheif"
     end
 
 

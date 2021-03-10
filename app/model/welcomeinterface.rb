@@ -35,9 +35,6 @@ class WelcomeInterface
     end
     
 
-
-
-
     def run
         welcome_interface
         requesting_for_login_or_register

@@ -26,13 +26,25 @@ end
 
 def sign_up_helper
     puts "You've chosen wisely!"
-    @owner = Owner.sign_up_helper_method
+    owner = Owner.sign_up_helper_method
     welcome_screen()
 end
 
 def exit_helper
     puts "Smell ya later!"
     puts "run"
+end
+
+def delete_helper_method
+    puts "it works"
+end
+
+def change_password_method
+    puts "this works too"
+end
+
+def favorite_helper_method
+    puts "all set cheif"
 end
 
 # prompt = TTY::Prompt.new
@@ -66,7 +78,7 @@ prompt.select "Pick a RPG Game" do |menu|
     menu.choice "Persona Five", -> {persona_five}
     menu.choice "The Witcher", -> {the_witcher}
     menu.choice "Diablo", -> {diablo}
-    menu.choice "Exit to Directory", -> {genres}
+    menu.choice "Exit to Genres", -> {genres}
 end
  end
 
@@ -77,7 +89,7 @@ end
     menu.choice "NBA LIVE", -> {nba_live}
     menu.choice "Madden", -> {madden}
     menu.choice "FIFA", -> {fifa}
-    menu.choice "Exit to Directory", -> {genres}
+    menu.choice "Exit to Genres", -> {genres}
  end  
  end
 
@@ -88,12 +100,19 @@ end
         menu.choice "XCOM", -> {xcom}
         menu.choice "Humankind", -> {humankind}
         menu.choice "Stellaris", -> {stellaris}
-        menu.choice "Exit to Directory", -> {genres}
+        menu.choice "Exit to Genres", -> {genres}
     end
  end
 
  def profiles
+    prompt = TTY::Prompt.new
      puts "inside profiles"
+     prompt.select "What would you like to do?" do |menu|
+        menu.choice "Delete User Info", -> {delete_helper_method}
+        menu.choice "Change Password", -> {change_password_method}
+        menu.choice "Favorites", -> {favorite_helper_method}
+        menu.choice "Exit to Directory", -> {the_directory}
+     end
  end
 # welcome = WelcomeInterface.new 
 # welcome.run
