@@ -30,9 +30,9 @@ class Owner < ActiveRecord::Base
         puts "Welcome Fam!"
     end
 
-    def delete_helper_method
-        
-    end
+    #def display_owner_method
+        #owner = Owner.find_by(owner_id)
+    #end
 
 end
 

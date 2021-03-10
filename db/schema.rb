@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_03_09_201747) do
   create_table "reviews", force: :cascade do |t|
     t.integer "owner_id"
     t.integer "video_game_id"
-    t.integer "rating"
+    t.integer "score"
     t.string "comment"
   end
 

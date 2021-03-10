@@ -51,9 +51,10 @@ end
 
 
 def persona_five
+    #binding.pry
     prompt = TTY::Prompt.new
-    prompt.select "Add to Favorites?" do |menu|
-        menu.choice "Add", -> {favorite_helper_method}
+    prompt.select "Add a Rating?" do |menu|
+        menu.choice "Add Rating", -> {add_rating_method}
         menu.choice "Back to RPG", -> {rpg_genre}
         menu.choice "Exit to Genres", -> {genres}
     end
@@ -61,8 +62,8 @@ end
 
 def the_witcher
     prompt = TTY::Prompt.new
-    prompt.select "Add to Favorites?" do |menu|
-        menu.choice "Add", -> {favorite_helper_method}
+    prompt.select "Add a Rating?" do |menu|
+        menu.choice "Add Rating", -> {add_rating_method}
         menu.choice "Back to RPG", -> {rpg_genre}
         menu.choice "Exit to Genres", -> {genres}
     end
@@ -70,8 +71,8 @@ end
 
 def diablo
     prompt = TTY::Prompt.new
-    prompt.select "Add to Favorites?" do |menu|
-        menu.choice "Add", -> {favorite_helper_method}
+    prompt.select "Add a Rating?" do |menu|
+        menu.choice "Add Rating", -> {add_rating_method}
         menu.choice "Back to RPG", -> {rpg_genre}
         menu.choice "Exit to Genres", -> {genres}
     end
@@ -79,8 +80,8 @@ end
 
 def nba_live
     prompt = TTY::Prompt.new
-    prompt.select "Add to Favorites?" do |menu|
-        menu.choice "Add", -> {favorite_helper_method}
+    prompt.select "Add a Rating?" do |menu|
+        menu.choice "Add Rating", -> {add_rating_method}
         menu.choice "Back to Sports", -> {sports_genre}
         menu.choice "Exit to Genres", -> {genres}
     end
@@ -88,8 +89,8 @@ end
 
 def madden
     prompt = TTY::Prompt.new
-    prompt.select "Add to Favorites?" do |menu|
-        menu.choice "Add", -> {favorite_helper_method}
+    prompt.select "Add a Rating?" do |menu|
+        menu.choice "Add Raing", -> {add_rating_method}
         menu.choice "Back to Sports", -> {sports_genre}
         menu.choice "Exit to Genres", -> {genres}
     end
@@ -97,8 +98,8 @@ end
 
 def fifa
     prompt = TTY::Prompt.new
-    prompt.select "Add to Favorites?" do |menu|
-        menu.choice "Add", -> {favorite_helper_method}
+    prompt.select "Add a Rating?" do |menu|
+        menu.choice "Add Rating", -> {add_rating_method}
         menu.choice "Back to Sports", -> {sports_genre}
         menu.choice "Exit to Genres", -> {genres}
     end
@@ -106,8 +107,8 @@ end
 
 def xcom
     prompt = TTY::Prompt.new
-    prompt.select "Add to Favorites?" do |menu|
-        menu.choice "Add", -> {favorite_helper_method}
+    prompt.select "Add a Rating?" do |menu|
+        menu.choice "Add Rating", -> {add_rating_method}
         menu.choice "Back to Strategy", -> {strategy_genre}
         menu.choice "Exit to Genres", -> {genres}
     end
@@ -115,8 +116,8 @@ end
 
 def humankind
     prompt = TTY::Prompt.new
-    prompt.select "Add to Favorites?" do |menu|
-        menu.choice "Add", -> {favorite_helper_method}
+    prompt.select "Add a Rating?" do |menu|
+        menu.choice "Add Rating", -> {add_rating_method}
         menu.choice "Back to Strategy", -> {strategy_genre}
         menu.choice "Exit to Genres", -> {genres}
     end
@@ -124,8 +125,8 @@ end
 
 def stellaris
     prompt = TTY::Prompt.new
-    prompt.select "Add to Favorites?" do |menu|
-        menu.choice "Add", -> {favorite_helper_method}
+    prompt.select "Add a Rating?" do |menu|
+        menu.choice "Add Rating", -> {add_rating_method}
         menu.choice "Back to Strategy", -> {strategy_genre}
         menu.choice "Exit to Genres", -> {genres}
     end
@@ -193,7 +194,7 @@ end
      puts "inside profiles"
      prompt.select "What would you like to do?" do |menu|
         menu.choice "Delete User Info", -> {delete_helper_method}
-        #menu.choice "Change Password", -> {change_password_method}
+        menu.choice "Display User", -> {display_owner_method}
         menu.choice "Favorites", -> {favorite_helper_method}
         menu.choice "Exit to Directory", -> {the_directory}
      end

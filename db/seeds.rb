@@ -21,5 +21,5 @@ stellaris = VideoGame.create(title: "Stellaris", genre: "Startegy", rating: "T")
 
 
 r1 = Review.create(owner_id: 1, video_game_id: 1, rating: 4, comment: "This is a fun game!")
-r1 = Review.create(owner_id: 3, video_game_id: 4, rating: 3, comment: "Could be better...")
-r1 = Review.create(owner_id: 4, video_game_id: 5, rating: 5, comment: "Really like this one GOTY!")
+r2 = Review.create(owner_id: 3, video_game_id: 4, rating: 3, comment: "Could be better...")
+r3 = Review.create(owner_id: 4, video_game_id: 5, rating: 5, comment: "Really like this one GOTY!")
