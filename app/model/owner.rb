@@ -30,18 +30,5 @@ class Owner < ActiveRecord::Base
         puts "Welcome Fam!"
     end
 
-    def delete_helper_method
-        puts "it works"
-    end
-
-    def change_password_method
-        puts "this works too"
-    end
-
-    def favorite_helper_method
-        puts "all set cheif"
-    end
-
-
 end
 

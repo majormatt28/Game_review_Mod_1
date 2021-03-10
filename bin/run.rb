@@ -36,7 +36,7 @@ def exit_helper
 end
 
 def delete_helper_method
-    puts "it works"
+    
 end
 
 def change_password_method
@@ -44,7 +44,88 @@ def change_password_method
 end
 
 def favorite_helper_method
-    puts "all set cheif"
+    
+end
+
+def persona_five
+    prompt = TTY::Prompt.new
+    prompt.select "Add to Favorites?" do |menu|
+        menu.choice "Add", -> {favorite_helper_method}
+        menu.choice "Back to RPG", -> {rpg_genre}
+        menu.choice "Exit to Genres", -> {genres}
+    end
+end
+
+def the_witcher
+    prompt = TTY::Prompt.new
+    prompt.select "Add to Favorites?" do |menu|
+        menu.choice "Add", -> {favorite_helper_method}
+        menu.choice "Back to RPG", -> {rpg_genre}
+        menu.choice "Exit to Genres", -> {genres}
+    end
+end
+
+def diablo
+    prompt = TTY::Prompt.new
+    prompt.select "Add to Favorites?" do |menu|
+        menu.choice "Add", -> {favorite_helper_method}
+        menu.choice "Back to RPG", -> {rpg_genre}
+        menu.choice "Exit to Genres", -> {genres}
+    end
+end
+
+def nba_live
+    prompt = TTY::Prompt.new
+    prompt.select "Add to Favorites?" do |menu|
+        menu.choice "Add", -> {favorite_helper_method}
+        menu.choice "Back to Sports", -> {sports_genre}
+        menu.choice "Exit to Genres", -> {genres}
+    end
+end
+
+def madden
+    prompt = TTY::Prompt.new
+    prompt.select "Add to Favorites?" do |menu|
+        menu.choice "Add", -> {favorite_helper_method}
+        menu.choice "Back to Sports", -> {sports_genre}
+        menu.choice "Exit to Genres", -> {genres}
+    end
+end
+
+def fifa
+    prompt = TTY::Prompt.new
+    prompt.select "Add to Favorites?" do |menu|
+        menu.choice "Add", -> {favorite_helper_method}
+        menu.choice "Back to Sports", -> {sports_genre}
+        menu.choice "Exit to Genres", -> {genres}
+    end
+end
+
+def xcom
+    prompt = TTY::Prompt.new
+    prompt.select "Add to Favorites?" do |menu|
+        menu.choice "Add", -> {favorite_helper_method}
+        menu.choice "Back to Strategy", -> {strategy_genre}
+        menu.choice "Exit to Genres", -> {genres}
+    end
+end
+
+def humankind
+    prompt = TTY::Prompt.new
+    prompt.select "Add to Favorites?" do |menu|
+        menu.choice "Add", -> {favorite_helper_method}
+        menu.choice "Back to Strategy", -> {strategy_genre}
+        menu.choice "Exit to Genres", -> {genres}
+    end
+end
+
+def stellaris
+    prompt = TTY::Prompt.new
+    prompt.select "Add to Favorites?" do |menu|
+        menu.choice "Add", -> {favorite_helper_method}
+        menu.choice "Back to Strategy", -> {strategy_genre}
+        menu.choice "Exit to Genres", -> {genres}
+    end
 end
 
 # prompt = TTY::Prompt.new
