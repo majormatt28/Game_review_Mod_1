@@ -34,9 +34,8 @@ class WelcomeInterface
         puts "Smell ya later!"
     end
     
-    def directory
-        
-    end
+
+
 
 
     def run

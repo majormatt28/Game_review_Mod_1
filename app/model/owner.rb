@@ -5,9 +5,17 @@ class Owner < ActiveRecord::Base
     def self.login_helper_method
         puts "This you?"
         owner = STDIN.gets.chomp
-        puts ("You sure?")
+        puts "You sure?"
         password = STDIN.gets.chomp
         owner_inst = Owner.find_by(name: owner, password: password)
+
+        if owner == owner_inst.name
+            puts "Successful Login"
+            return true
+        else 
+            puts "Try Again"
+            return false
+        end 
     end
 
     def self.sign_up_helper_method
