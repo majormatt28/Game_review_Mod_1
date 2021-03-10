@@ -1,5 +1,5 @@
 require_relative '../config/environment'
-
+require 'pry'
 
 
 
@@ -35,17 +35,11 @@ def exit_helper
     puts "run"
 end
 
-def delete_helper_method
-    
-end
-
-def change_password_method
-    puts "this works too"
-end
-
 def favorite_helper_method
+    puts "It's been added!"
     
 end
+
 
 def persona_five
     prompt = TTY::Prompt.new
@@ -143,7 +137,7 @@ end
 
 def genres
     prompt = TTY::Prompt.new
-puts "Pick of Liter"
+puts "Pick of the Liter"
      prompt.select "Pick a Genre" do |menu|
         menu.choice "RPG", -> {rpg_genre}
         menu.choice "Sports", -> {sports_genre}
