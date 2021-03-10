@@ -31,15 +31,7 @@ class Owner < ActiveRecord::Base
     end
 
     def delete_helper_method
-
-    end
-
-    def change_password_method
-        puts "this works too"
-    end
-    
-    def favorite_helper_method
-        puts "It's been added!"
+        
     end
 
 end

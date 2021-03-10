@@ -35,10 +35,19 @@ def exit_helper
     puts "run"
 end
 
-def favorite_helper_method
-    puts "It's been added!"
+#def favorite_helper_method
+    #puts "It's been added!"
+
+    #binding.pry
+#end
+
+def delete_method
     
 end
+
+#def change_password_method
+    #puts "this works too"
+#end
 
 
 def persona_five
@@ -184,7 +193,7 @@ end
      puts "inside profiles"
      prompt.select "What would you like to do?" do |menu|
         menu.choice "Delete User Info", -> {delete_helper_method}
-        menu.choice "Change Password", -> {change_password_method}
+        #menu.choice "Change Password", -> {change_password_method}
         menu.choice "Favorites", -> {favorite_helper_method}
         menu.choice "Exit to Directory", -> {the_directory}
      end
