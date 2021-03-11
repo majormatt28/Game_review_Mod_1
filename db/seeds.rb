@@ -27,6 +27,8 @@ r1 = Review.create(owner_id: hamstars.id, video_game_id: persona_five.id, score:
 r2 = Review.create(owner_id: hamstars.id, video_game_id: the_witcher.id, score: 3, comment: "Could be better...")
 r3 = Review.create(owner_id: hamstars.id, video_game_id: diablo.id, score: 5, comment: "Really like this one GOTY!")
 
-r4 = Review.create(owner_id: bob.id, video_game_id: persona_five.id, score: 4, comment: "This is a fun ga")
-r5 = Review.create(owner_id: maseo.id, video_game_id: persona_five.id, score: 5, comment: "This is a ")
+r4 = Review.create(owner_id: bob.id, video_game_id: persona_five.id, score: 4, comment: "Woah what an awesome game!!")
+r5 = Review.create(owner_id: maseo.id, video_game_id: persona_five.id, score: 5, comment: "This is a great game!!")
 r6 = Review.create(owner_id: tauros.id, video_game_id: persona_five.id, score: 3, comment: "fugazi")
+
+puts "Successfully Seeded"
