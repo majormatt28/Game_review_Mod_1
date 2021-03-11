@@ -11,13 +11,13 @@ class Owner < ActiveRecord::Base
         #binding.pry
         password = STDIN.gets.chomp
         owner_inst = Owner.find_by(name: owner, password: password)
-
-        if owner == owner_inst.name
-            puts "Successful Login"
-            return [true, owner_inst]
-        else 
+        #binding.pry
+        if owner_inst == nil
             puts "Try Again"
             return [false, owner_inst]
+        else 
+            puts "Successful Login"
+            return [true, owner_inst]
         end 
     end
 
