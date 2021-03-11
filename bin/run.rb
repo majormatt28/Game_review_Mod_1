@@ -109,7 +109,7 @@ def genres(user)
     #how to read from active record
     # multiple reviews 
     puts ""
-    puts "ITS ALL CAP!"
+    puts "IT'S ALL CAP!"
     puts ""
     review_list = Review.where(video_game_id: game.id)
     #game.reviews works as well because of ActiveRecord
