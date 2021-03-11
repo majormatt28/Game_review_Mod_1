@@ -4,6 +4,7 @@ require 'pry'
 #global area
 
 def the_directory(user)
+    system 'clear'
     #local area - state
     prompt = TTY::Prompt.new
     prompt.select "Directory" do |menu|
@@ -44,7 +45,20 @@ end
 
 def welcome_screen
     prompt = TTY::Prompt.new
-    puts "Welcome to Gamer's Paradise"
+    puts "Welcome to Gamer's Paradise
+                             .                                               
+                     /   ))     |\         )               ).           
+               c--. (\  ( `.    / )  (\   ( `.     ).     ( (           
+               | |   ))  ) )   ( (   `.`.  ) )    ( (      ) )          
+               | |  ( ( / _..----.._  ) | ( ( _..----.._  ( (           
+ ,-.           | |---) V.'-------.. `-. )-/.-' ..------ `--) \._        
+ | /===========| |  (   |      ) ( ``-.`\/'.-''           (   ) ``-._   
+ | | / / / / / | |--------------------->  <-------------------------_>=-
+ | /===========| |                 ..-'./\.`-..                _,,-'    
+ `-'           | |-------._------''_.-'----`-._``------_.-----'         
+               | |         ``----''            ``----''                  
+               | |                                                       
+               c--`        ".colorize(:red)                                
     puts "You can Sign-up or Login now to enjoy a selction of games."  
     prompt.select "Sign-up! or Login!" do |menu|
         menu.choice "Login", -> {login_helper}
@@ -54,6 +68,7 @@ def welcome_screen
 end
 
 def genres(user)
+    system 'clear'
     prompt = TTY::Prompt.new
     puts "Pick of the Liter"
      prompt.select "Pick a Genre" do |menu|
@@ -65,8 +80,9 @@ def genres(user)
  end
 
  def rpg_genre(user)
+    system 'clear'
     prompt = TTY::Prompt.new
-    puts "Pew Pew"
+    puts "Honor or Death!"
     prompt.select "Pick a RPG Game" do |menu|
         rpg_list = VideoGame.where(genre: "RPG")
         rpg_list.each do |rpg|
@@ -129,6 +145,7 @@ def genres(user)
  #also dynamic ..the beauty of passing through
 
  def sports_genre(user)
+    system 'clear'
     prompt = TTY::Prompt.new
     puts "BIG BALLER BRAND"
     prompt.select "Pick a Sports Game" do |menu|
@@ -142,6 +159,7 @@ def genres(user)
  end
 
  def strategy_genre(user)
+    system 'clear'
     prompt = TTY::Prompt.new
     puts "Stay Woke"
     prompt.select "Pick a Strategy Game" do |menu|
