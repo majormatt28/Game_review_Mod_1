@@ -14,10 +14,10 @@ class Owner < ActiveRecord::Base
 
         if owner == owner_inst.name
             puts "Successful Login"
-            return true
+            return [true, owner_inst]
         else 
             puts "Try Again"
-            return false
+            return [false, owner_inst]
         end 
     end
 

@@ -1,23 +1,25 @@
 require_relative '../config/environment'
 require 'pry'
 
+#global area
 
-
-def the_directory
+def the_directory(user)
+    #local area - state
     prompt = TTY::Prompt.new
     prompt.select "Directory" do |menu|
-        menu.choice "Genres", -> {genres}
-        menu.choice "Profiles", -> {profiles}
+        menu.choice "Genres", -> {genres(user)}
+        menu.choice "Profiles", -> {profiles(user)}
         menu.choice "Exit to Main Menu", -> {welcome_screen}
-        
     end
 end
+
+#this area
 
 def login_helper
     puts "Welcome Back!"
     owner_confirmation = Owner.login_helper_method
-    if owner_confirmation
-        the_directory()
+    if owner_confirmation[0]
+        the_directory(owner_confirmation[1])
     else
         welcome_screen()
     end
@@ -32,107 +34,12 @@ end
 
 def exit_helper
     puts "Smell ya later!"
-    puts "run"
+    puts ""
 end
-
-#def favorite_helper_method
-    #puts "It's been added!"
-
-    #binding.pry
-#end
 
 def delete_method
-    
+   puts "delete"
 end
-
-#def change_password_method
-    #puts "this works too"
-#end
-
-
-def persona_five
-    #binding.pry
-    prompt = TTY::Prompt.new
-    prompt.select "Add a Rating?" do |menu|
-        menu.choice "Add Rating", -> {add_rating_method}
-        menu.choice "Back to RPG", -> {rpg_genre}
-        menu.choice "Exit to Genres", -> {genres}
-    end
-end
-
-def the_witcher
-    prompt = TTY::Prompt.new
-    prompt.select "Add a Rating?" do |menu|
-        menu.choice "Add Rating", -> {add_rating_method}
-        menu.choice "Back to RPG", -> {rpg_genre}
-        menu.choice "Exit to Genres", -> {genres}
-    end
-end
-
-def diablo
-    prompt = TTY::Prompt.new
-    prompt.select "Add a Rating?" do |menu|
-        menu.choice "Add Rating", -> {add_rating_method}
-        menu.choice "Back to RPG", -> {rpg_genre}
-        menu.choice "Exit to Genres", -> {genres}
-    end
-end
-
-def nba_live
-    prompt = TTY::Prompt.new
-    prompt.select "Add a Rating?" do |menu|
-        menu.choice "Add Rating", -> {add_rating_method}
-        menu.choice "Back to Sports", -> {sports_genre}
-        menu.choice "Exit to Genres", -> {genres}
-    end
-end
-
-def madden
-    prompt = TTY::Prompt.new
-    prompt.select "Add a Rating?" do |menu|
-        menu.choice "Add Raing", -> {add_rating_method}
-        menu.choice "Back to Sports", -> {sports_genre}
-        menu.choice "Exit to Genres", -> {genres}
-    end
-end
-
-def fifa
-    prompt = TTY::Prompt.new
-    prompt.select "Add a Rating?" do |menu|
-        menu.choice "Add Rating", -> {add_rating_method}
-        menu.choice "Back to Sports", -> {sports_genre}
-        menu.choice "Exit to Genres", -> {genres}
-    end
-end
-
-def xcom
-    prompt = TTY::Prompt.new
-    prompt.select "Add a Rating?" do |menu|
-        menu.choice "Add Rating", -> {add_rating_method}
-        menu.choice "Back to Strategy", -> {strategy_genre}
-        menu.choice "Exit to Genres", -> {genres}
-    end
-end
-
-def humankind
-    prompt = TTY::Prompt.new
-    prompt.select "Add a Rating?" do |menu|
-        menu.choice "Add Rating", -> {add_rating_method}
-        menu.choice "Back to Strategy", -> {strategy_genre}
-        menu.choice "Exit to Genres", -> {genres}
-    end
-end
-
-def stellaris
-    prompt = TTY::Prompt.new
-    prompt.select "Add a Rating?" do |menu|
-        menu.choice "Add Rating", -> {add_rating_method}
-        menu.choice "Back to Strategy", -> {strategy_genre}
-        menu.choice "Exit to Genres", -> {genres}
-    end
-end
-
-# prompt = TTY::Prompt.new
 
 def welcome_screen
     prompt = TTY::Prompt.new
@@ -145,62 +52,185 @@ def welcome_screen
     end
 end
 
-def genres
+def genres(user)
     prompt = TTY::Prompt.new
-puts "Pick of the Liter"
+    puts "Pick of the Liter"
      prompt.select "Pick a Genre" do |menu|
-        menu.choice "RPG", -> {rpg_genre}
-        menu.choice "Sports", -> {sports_genre}
-        menu.choice "Strategy", -> {strategy_genre}
-        menu.choice "Exit to Directory", -> {the_directory}
+        menu.choice "RPG", -> {rpg_genre(user)}
+        menu.choice "Sports", -> {sports_genre(user)}
+        menu.choice "Strategy", -> {strategy_genre(user)}
+        menu.choice "Exit to Directory", -> {the_directory(user)}
     end
  end
 
- def rpg_genre
+ def rpg_genre(user)
     prompt = TTY::Prompt.new
     puts "Pew Pew"
-prompt.select "Pick a RPG Game" do |menu|
-    menu.choice "Persona Five", -> {persona_five}
-    menu.choice "The Witcher", -> {the_witcher}
-    menu.choice "Diablo", -> {diablo}
-    menu.choice "Exit to Genres", -> {genres}
-end
+    prompt.select "Pick a RPG Game" do |menu|
+        rpg_list = VideoGame.where(genre: "RPG")
+        rpg_list.each do |rpg|
+            menu.choice rpg.title, -> {picked_game(rpg, user)}
+        end
+     menu.choice "Exit to Genres", -> {genres(user)}
+    end
  end
 
- def sports_genre
+ def picked_game(game, user)
+    #this is for a single game
+    #only accepts video game instances
     prompt = TTY::Prompt.new
-    puts "Ball Out"
+    prompt.select "#{game.title}" do |menu|
+        menu.choice "Add a Review", -> {add_review(game, user)}
+        menu.choice "See Reviews", -> {see_reviews(game, user)}
+        # menu.choice "Back to RPG", -> {rpg_genre}
+        menu.choice "Exit to Genres", -> {genres(user)}
+    end
+ end
+#picked_game is dynamic he dont care
+
+ def add_review(game, user)
+    #how to create in active record
+    # puts "What's your username?"
+    # username = STDIN.gets.chomp
+    # owner_inst = Owner.find_by(name: username)
+    puts "Tell me how you really feel"
+    comment = STDIN.gets.chomp
+    puts "What's that score?"
+    score = STDIN.gets.chomp
+    #all above fills into a review
+    Review.create(owner_id: user.id, video_game_id: game.id, score: score, comment: comment)
+    #made global variable to use current_user.id 
+    see_reviews(game, user)
+    #confirms that it was made
+ end
+ #add_reviews also dynamic ..the beauty of passing through
+
+ def see_reviews(game, user)
+    #how to read from active record
+    # multiple reviews 
+    puts ""
+    puts "ITS ALL CAP!"
+    puts ""
+    review_list = Review.where(video_game_id: game.id)
+    #game.reviews works as well because of ActiveRecord
+    review_list.each do |review|
+        puts "#{review.owner.name} says: #{review.comment}"
+        puts "score: #{review.score}"
+        puts ""
+        #puts cursor on new line similar to \n
+    end
+    prompt = TTY::Prompt.new
+    prompt.select "#{game.title}" do |menu|
+        menu.choice "Exit to Genres", -> {genres(user)}
+    end
+ end
+ #also dynamic ..the beauty of passing through
+
+ def sports_genre(user)
+    prompt = TTY::Prompt.new
+    puts "BIG BALLER BRAND"
     prompt.select "Pick a Sports Game" do |menu|
-    menu.choice "NBA LIVE", -> {nba_live}
-    menu.choice "Madden", -> {madden}
-    menu.choice "FIFA", -> {fifa}
-    menu.choice "Exit to Genres", -> {genres}
- end  
+        sport_list = VideoGame.where(genre: "Sport")
+        sport_list.each do |sport|
+            menu.choice sport.title, -> {picked_game(sport, user)}
+        end
+
+        menu.choice "Exit to Genres", -> {genres(user)}
+    end 
  end
 
- def strategy_genre
+ def strategy_genre(user)
     prompt = TTY::Prompt.new
     puts "Stay Woke"
     prompt.select "Pick a Strategy Game" do |menu|
-        menu.choice "XCOM", -> {xcom}
-        menu.choice "Humankind", -> {humankind}
-        menu.choice "Stellaris", -> {stellaris}
-        menu.choice "Exit to Genres", -> {genres}
-    end
- end
+        strategy_list = VideoGame.where(genre: "Strategy")
+        strategy_list.each do |strategy|
+            menu.choice strategy.title, -> {picked_game(strategy, user)}
+            end
 
- def profiles
+        menu.choice "Exit to Genres", -> {genres(user)}
+        end 
+        # menu.choice "XCOM", -> {xcom}
+        # menu.choice "Humankind", -> {humankind}
+        # menu.choice "Stellaris", -> {stellaris}
+        # menu.choice "Exit to Genres", -> {genres(user)}
+    end
+ 
+
+ def profiles(user)
     prompt = TTY::Prompt.new
      puts "inside profiles"
      prompt.select "What would you like to do?" do |menu|
-        menu.choice "Delete User Info", -> {delete_helper_method}
-        menu.choice "Display User", -> {display_owner_method}
-        menu.choice "Favorites", -> {favorite_helper_method}
-        menu.choice "Exit to Directory", -> {the_directory}
+        menu.choice "Delete User Info", -> {delete_helper_method(user)}
+        menu.choice "Display User", -> {display_owner_method(user)}
+        # menu.choice "Favorites", -> {favorite_helper_method}
+        menu.choice "Exit to Directory", -> {the_directory(user)}
      end
  end
-# welcome = WelcomeInterface.new 
-# welcome.run
-welcome_screen()
-puts "end of Welcome Screen \n \n"
 
+ def display_owner_method(user)
+#print out owner name : user.name
+#print out owner name : user.password
+    puts ""
+    puts "username: #{user.name}"
+    puts "password: #{user.password}"
+    puts ""
+# again "" adds space similar to \n \n
+    prompt = TTY::Prompt.new
+    prompt.select "What would you like to do?" do |menu|
+        menu.choice "change username", -> {update_helper(user, "username")}
+        menu.choice "change password", -> {update_helper(user, "password")}
+        menu.choice "Exit to Directory", -> {the_directory(user)}
+     end
+ end
+ 
+
+ def update_helper(user, options)
+    #how to update the active record
+    if(options == "username")
+        puts "What's your new username?"
+        username = STDIN.gets.chomp
+        user.update(name: username)
+    else
+        puts "What's your new password ?"
+        password = STDIN.gets.chomp
+        user.update(password: password)
+    end
+    puts ""
+    prompt = TTY::Prompt.new
+    prompt.select "What would you like to do?" do |menu|
+        # menu.choice "Delete", -> {delete_helper_method(user)}
+        # menu.choice "", -> {display_dispaly_method(user)}
+        menu.choice "Display User", -> {display_owner_method(user)}
+        menu.choice "Exit to Directory", -> {the_directory(user)}
+     end
+ end
+
+
+ def delete_helper_method(user)
+    puts "would you like to delete your account ???????"
+    
+    prompt = TTY::Prompt.new
+    prompt.select "What would you like to do?" do |menu|
+        menu.choice "yes", -> {deleteUser(user)}
+        menu.choice "no", -> {display_owner_method(user)}
+        menu.choice "Exit to Directory", -> {the_directory(user)}
+    end
+end
+
+def deleteUser(user)
+    #how to delete from active record
+    user.destroy
+    welcome_screen()
+ end
+
+welcome_screen()
+
+
+
+
+
+# create: create 
+# read : find_by, where, find,
+# update: update
+# delete: destroy
