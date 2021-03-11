@@ -128,9 +128,9 @@ def genres(user)
     puts ""
     puts "IT'S ALL CAP!"
     puts ""
-    review_list = Review.where(video_game_id: game.id)
+    # review_list = Review.where(video_game_id: game.id)
     #game.reviews works as well because of ActiveRecord
-    review_list.each do |review|
+    game.reviews.each do |review|
         #binding.pry
         puts "#{review.owner.name} says: #{review.comment}"
         puts "score: #{review.score}"
