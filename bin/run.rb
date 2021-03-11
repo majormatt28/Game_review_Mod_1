@@ -4,6 +4,7 @@ require 'pry'
 #global area
 
 def the_directory(user)
+    system 'clear'
     #local area - state
     prompt = TTY::Prompt.new
     prompt.select "Directory" do |menu|
@@ -66,6 +67,7 @@ def welcome_screen
 end
 
 def genres(user)
+    system 'clear'
     prompt = TTY::Prompt.new
     puts "Pick of the Liter"
      prompt.select "Pick a Genre" do |menu|
@@ -77,23 +79,9 @@ def genres(user)
  end
 
  def rpg_genre(user)
+    system 'clear'
     prompt = TTY::Prompt.new
-    puts "
-    |\                     /)
-    /\_\\__               (_//
-   |   `>\-`     _._       //`)
-    \ /` \\  _.-`:::`-._  //
-     `    \|`    :::    `|/
-           |     :::     |
-           |.....:::.....|
-           |:::::::::::::|
-           |     :::     |
-           \     :::     /
-            \    :::    /
-             `-. ::: .-'
-      jgs     //`:::`\\
-             //   '   \\
-            |/         \\"
+    puts "Honor or Death!"
     prompt.select "Pick a RPG Game" do |menu|
         rpg_list = VideoGame.where(genre: "RPG")
         rpg_list.each do |rpg|
@@ -156,6 +144,7 @@ def genres(user)
  #also dynamic ..the beauty of passing through
 
  def sports_genre(user)
+    system 'clear'
     prompt = TTY::Prompt.new
     puts "BIG BALLER BRAND"
     prompt.select "Pick a Sports Game" do |menu|
@@ -169,6 +158,7 @@ def genres(user)
  end
 
  def strategy_genre(user)
+    system 'clear'
     prompt = TTY::Prompt.new
     puts "Stay Woke"
     prompt.select "Pick a Strategy Game" do |menu|

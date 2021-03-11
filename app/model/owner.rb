@@ -3,6 +3,7 @@ class Owner < ActiveRecord::Base
     has_many :video_games, through: :reviews
 
     def self.login_helper_method
+        system 'clear'
         puts "This you?"
         owner = STDIN.gets.chomp
         puts "You sure?"
@@ -20,6 +21,7 @@ class Owner < ActiveRecord::Base
     end
 
     def self.sign_up_helper_method
+        system 'clear'
         puts "What is your chosen username?"
         owner = STDIN.gets.chomp
         puts "What password do you desire?"
