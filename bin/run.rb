@@ -43,7 +43,20 @@ end
 
 def welcome_screen
     prompt = TTY::Prompt.new
-    puts "Welcome to Gamer's Paradise"
+    puts "Welcome to Gamer's Paradise
+                             .                                               
+                     /   ))     |\         )               ).           
+               c--. (\  ( `.    / )  (\   ( `.     ).     ( (           
+               | |   ))  ) )   ( (   `.`.  ) )    ( (      ) )          
+               | |  ( ( / _..----.._  ) | ( ( _..----.._  ( (           
+ ,-.           | |---) V.'-------.. `-. )-/.-' ..------ `--) \._        
+ | /===========| |  (   |      ) ( ``-.`\/'.-''           (   ) ``-._   
+ | | / / / / / | |--------------------->  <-------------------------_>=-
+ | /===========| |                 ..-'./\.`-..                _,,-'    
+ `-'           | |-------._------''_.-'----`-._``------_.-----'         
+               | |         ``----''            ``----''                  
+               | |                                                       
+               c--`        ".colorize(:red)                                
     puts "You can Sign-up or Login now to enjoy a selction of games."  
     prompt.select "Sign-up! or Login!" do |menu|
         menu.choice "Login", -> {login_helper}
@@ -65,7 +78,22 @@ def genres(user)
 
  def rpg_genre(user)
     prompt = TTY::Prompt.new
-    puts "Pew Pew"
+    puts "
+    |\                     /)
+    /\_\\__               (_//
+   |   `>\-`     _._       //`)
+    \ /` \\  _.-`:::`-._  //
+     `    \|`    :::    `|/
+           |     :::     |
+           |.....:::.....|
+           |:::::::::::::|
+           |     :::     |
+           \     :::     /
+            \    :::    /
+             `-. ::: .-'
+      jgs     //`:::`\\
+             //   '   \\
+            |/         \\"
     prompt.select "Pick a RPG Game" do |menu|
         rpg_list = VideoGame.where(genre: "RPG")
         rpg_list.each do |rpg|
